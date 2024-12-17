@@ -1,0 +1,30 @@
+# Tomcat specific files
+# Tomcatのログファイルやワークディレクトリなどを無視する
+logs/
+work/
+temp/
+webapps/ROOT.war
+webapps/ROOT/
+
+# Tomcatの設定ファイルでローカル環境に特有な設定が含まれる場合があるので無視
+conf/context.xml
+conf/catalina.properties
+conf/server.xml
+
+# ビルドファイル（JAR, WAR, EARなど）
+*.war
+*.ear
+*.jar
+
+# IDE固有のファイル（EclipseやIntelliJ IDEAなど）
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+
+# Mac OS Xの隠しファイル（Finderによる設定ファイルなど）
+.DS_Store
+
+# Linuxの隠しファイル
+*~

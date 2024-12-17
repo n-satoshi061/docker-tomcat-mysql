@@ -1,0 +1,33 @@
+services:
+  tomcat:
+    image: tomcat:9.0  # 公式のTomcatイメージを使用
+    container_name: tomcat
+    ports:
+      - "8080:8080"
+    environment:
+      - MYSQL_HOST=mysql
+      - MYSQL_PORT=3306
+      - MYSQL_DATABASE=example_db
+      - MYSQL_USER=example_user
+      - MYSQL_PASSWORD=example_password
+    depends_on:
+      - mysql
+    volumes:
+      - ./webapps:/usr/local/tomcat/webapps/
+
+  mysql:
+    image: mysql:8.0
+    container_name: mysql
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_DATABASE: example_db
+      MYSQL_USER: example_user
+      MYSQL_PASSWORD: example_password
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+
+volumes:
+  db_data:
